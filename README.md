@@ -1,5 +1,5 @@
 # project_prog_web
-
+## Maëlle Fleitz
 ## Project setup
 ```
 npm install
