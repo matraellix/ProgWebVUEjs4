@@ -30,7 +30,7 @@
 <script>
     
     export default {
-        name: 'SuperHeroCard',
+        name: 'superHeroCard',
         props: {
             biography : {type: Object, required: true},
             sortType: {type: String, required: true},
