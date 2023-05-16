@@ -1,9 +1,6 @@
 <template>
   <div class = "SuperHeroApp">
     
-    <!--<headerComponent />
-    <galleryComponent />
-    <footerComponent />-->
     <router-view name="header" class="header"/>
     <router-view class="gallery"/>
     <router-view name="footer" class="footer"/>
@@ -12,21 +9,9 @@
 
 <script>
 
-/*
-import headerComponent from './components/headerComponent.vue'
-import galleryComponent from './components/galleryComponent.vue'
-import footerComponent from './components/footerComponent.vue'
-*/
 
 export default {
 name: 'SuperHeroApp',
-/*
-components: {
-  headerComponent,
-  galleryComponent,
-  footerComponent,
-}
-*/
 }
 </script>
 
