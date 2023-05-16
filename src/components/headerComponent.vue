@@ -27,10 +27,10 @@ export default {
     methods: {
         async retrieveSuperHeroData() {
             this.SuperHeroData = await getSuperHeroData()
-        },
+        },/*
         emitSearchEvent() {
             this.$emit('search', this.searchByName)
-        }
+        }*/
     }
 }
 </script>

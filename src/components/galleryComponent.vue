@@ -1,48 +1,45 @@
 <template>
     <main>
-    <div class="superHeroGallery">
-        <div class="sortBy">
-            <div class="searchBar" >
-                <label>Search a character </label>
-                <input type="text" placeholder="name of a character" v-model="searchByName">
-                <button class="filteredButton cleanButton" v-if="searchByName" @click="cleanSearch">X</button>
+        <div class="superHeroGallery">
+            <div class="sortBy">
+                <div class="searchBar" >
+                    <label>Search a character </label>
+                    <input type="text" placeholder="name of a character" v-model="searchByName">
+                    <button class="filteredButton cleanButton" v-if="searchByName" @click="cleanSearch">X</button>
+                    
+                </div>
+                <label>Filter : </label>
+                <div class="filterSelect">
+                    <select v-model="sortType">
+                        <option value="strength(StrongestToWeakest)">Strength (descending)</option>
+                        <option value="strength(WeakestToStrongest)">Strength (ascending)</option>
+                        <option value="Intelligence(SmartestToDumbest)">Intelligence (descending)</option>
+                        <option value="Intelligence(DumbestToSmartest)">Intelligence (ascending)</option>
+                        <option value="AZsort">from A to Z</option>
+                        <option value="ZAsort">from Z to A</option>
+                    </select>
+                </div>
+                <div class="category"> 
                 
+                        <button class="filteredButton" @click="setAlignmentFilter('good')">Heroes only</button>
+                        <button class="filteredButton" @click="setAlignmentFilter('bad')">Villains only</button>
+                        <button class="filteredButton" @click="setAlignmentFilter('')">All</button>
+            
+                </div>
             </div>
-            <label>Filter : </label>
-            <div class="filterSelect">
-                <select v-model="sortType">
-                    <option value="strength(StrongestToWeakest)">Strength (descending)</option>
-                    <option value="strength(WeakestToStrongest)">Strength (ascending)</option>
-                    <option value="Intelligence(SmartestToDumbest)">Intelligence (descending)</option>
-                    <option value="Intelligence(DumbestToSmartest)">Intelligence (ascending)</option>
-                    <option value="AZsort">from A to Z</option>
-                    <option value="ZAsort">from Z to A</option>
-                </select>
-            </div>
-            <div class="category"> 
-              
-                    <button class="filteredButton" @click="setAlignmentFilter('good')">Heroes only</button>
-                    <button class="filteredButton" @click="setAlignmentFilter('bad')">Villains only</button>
-                    <button class="filteredButton" @click="setAlignmentFilter('')">All</button>
-        
-            </div>
+            
+            <router-link v-for="superhero in filteredHeroes" class ="text"  :to="{name: 'superhero', params: {id: superhero.id}}"  :key="superhero.id">
+                
+                <SuperHeroCard  
+                :name="superhero.name"
+                :biography="superhero.biography"
+                :imageUrl="superhero.images.md" 
+                :id="superhero.id"
+                :powerstats="superhero.powerstats"
+                :sortType="sortType" />
+                
+            </router-link>
         </div>
-        <router-link class ="text"  :to="{name: 'superhero', params: {id: superhero.id}}"  >
-        <transition-group class="melange-carte" name="shuffle">
-        
-            
-            <SuperHeroCard v-for="superhero in filteredHeroes" :key="superhero.id"
-            :name="superhero.name"
-            :biography="superhero.biography"
-            :imageUrl="superhero.images.md" 
-            :id="superhero.id"
-            :powerstats="superhero.powerstats"
-            :sortType="sortType" />
-            
-        
-        </transition-group>
-    </router-link>
-    </div>
     </main>
 
 </template>
