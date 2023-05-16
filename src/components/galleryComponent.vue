@@ -30,7 +30,7 @@
             
             <router-link v-for="superhero in filteredHeroes" class ="text"  :to="{name: 'superhero', params: {id: superhero.id}}"  :key="superhero.id">
                 
-                <SuperHeroCard  
+                <superHeroCard  
                 :name="superhero.name"
                 :biography="superhero.biography"
                 :imageUrl="superhero.images.md" 
@@ -47,13 +47,13 @@
 
 <script>
 
-import SuperHeroCard from './SuperHeroCard.vue'
+import superHeroCard from './superHeroCard.vue'
 import { getSuperHeroData } from '@/services/api/SuperHeroAPI.js'
 
 export default {
     name: 'galleryComponent',
     components: {
-        SuperHeroCard,
+        superHeroCard,
     },
     data() {
         return {
