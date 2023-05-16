@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import SuperHeroApp from './App.vue'
+import router from './router'
 
-createApp(App).mount('#app')
+createApp(SuperHeroApp).use(router).mount('#SuperHeroApp')
