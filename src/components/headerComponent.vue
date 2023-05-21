@@ -4,7 +4,7 @@
         <nav class="navBar">
             <router-link :to="{name: 'gallery'}">
                 <div class="searchBar" v-if="$route.name === 'superhero'">
-                <input type="button" value="back to the gallery">
+                    <input type="button" value="back to the gallery">
                 </div>
             </router-link>
         </nav>
@@ -12,26 +12,9 @@
 </template>
 
 <script>
-import { getSuperHeroData } from '@/services/api/SuperHeroAPI.js'
+
 export default {
     name: 'headerComponent',
-    data() {
-        return {
-            SuperHeroData: [],
-            searchByName: '',
-        }
-    },
-    created: function() {
-        this.retrieveSuperHeroData()
-    },
-    methods: {
-        async retrieveSuperHeroData() {
-            this.SuperHeroData = await getSuperHeroData()
-        },/*
-        emitSearchEvent() {
-            this.$emit('search', this.searchByName)
-        }*/
-    }
 }
 </script>
 
